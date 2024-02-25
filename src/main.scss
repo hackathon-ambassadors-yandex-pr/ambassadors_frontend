@@ -1,6 +1,7 @@
+@import url(./vendor/fonts.css);
 
 :root {
-  font-family:  Helvetica, Arial, sans-serif;
+  font-family: 'YS Text', Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
@@ -13,11 +14,11 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  --black-900: #1A1B22;
+  --black-900: #1a1b22;
   --black-500: #797981;
-  --black-300: #B5B5B7;
-  --black-100: #DDE0E4;
-  --gray: #F9FAFB;
+  --black-300: #b5b5b7;
+  --black-100: #dde0e4;
+  --gray: #f9fafb;
   --white: #ffffff;
   --blue: #5a9bff;
   --blue-main: #1d6bf3;
