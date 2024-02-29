@@ -2,41 +2,44 @@ import { createTheme, responsiveFontSizes } from '@mui/material';
 
 const colors = {
   black: {
-    '900': '#1a1b22',
+    // '900': '#1a1b22',
+    '700': '#2B2D33',
     '500': '#797981',
-    '300': '#b5b5b7',
-    '100': '#dde0e4',
+    '300': '#B5B5B7',
+    '100': '#DDE0E4',
   },
-  gray: '#f9fafb',
   white: '#ffffff',
-  blue: '#5a9bff',
-  'blue-main': '#1d6bf3',
-  'blue-bg': '#f1f6ff',
-  'blue-light': '#acccff',
-  red: '#ff0200',
-  green: '#87cc9e',
-  'green-light': '#c2e5ce',
-  purple: '#7f67d2',
-  'purple-light': '#ccc2ed',
-  orange: '#ffce92',
-  'orange-light': '#ffe1bd',
-  rose: '#ffdde5',
-  yellow: '#fff9d3',
-  pink: '#ffbffd',
-  brown: '#a99175',
+  blue: {
+    main: '#5A9BFF',
+    base: '#1D6BF3',
+    bg: '#F1F6FF',
+  },
+  red_error: '#E81818',
+  green_success: '#2AAD27',
+  rose: '#FFDDE5',
+  yellow: '#FFF9D3',
+  green: '#C2E5CE',
+  yellow_status: '#928324',
+  rose_status: '#79182F',
+  green_status: '#0C6B2D',
+  shadow: '#B0BEC55C',
+  bg: '#2B2D3380',
 };
 
 const theme = responsiveFontSizes(
   createTheme({
     palette: {
       primary: {
-        main: colors.blue,
+        main: colors.blue.main,
         // light:#42a5f5
-        // dark:#1565c0
+        dark: colors.blue.base,
         // contrastText:#fff
       },
       error: {
-        main: colors.red,
+        main: colors.red_error,
+      },
+      success: {
+        main: colors.green_success,
       },
       text: {
         // primary:,
@@ -68,9 +71,15 @@ const theme = responsiveFontSizes(
       },
       subtitle1: {
         fontFamily: '"YS Text", "Helvetica", "Arial", sans-serif',
-        fontSize: 18,
+        fontSize: 13,
         fontWeight: 400,
-        lineHeight: 1.33333,
+        lineHeight: 1.23077,
+      },
+      subtitle2: {
+        fontFamily: '"YS Text", "Helvetica", "Arial", sans-serif',
+        fontSize: 11,
+        fontWeight: 400,
+        lineHeight: 1.09091,
       },
       body1: {
         fontFamily: '"YS Text", "Helvetica", "Arial", sans-serif',
@@ -83,6 +92,12 @@ const theme = responsiveFontSizes(
         fontSize: 14,
         fontWeight: 400,
         lineHeight: 1.42857,
+      },
+      caption: {
+        fontFamily: '"YS Text", "Helvetica", "Arial", sans-serif',
+        fontSize: 18,
+        fontWeight: 400,
+        lineHeight: 1.33333,
       },
     },
   })
