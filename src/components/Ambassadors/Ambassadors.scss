@@ -1,0 +1,42 @@
+.ambasadors {
+  background-color: #f1f6ff;
+  border: 1px solid red;
+}
+
+.ambasadors__main {
+  border: 1px solid green;
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+}
+
+.ambasadors__title {
+  /* Амбассадоры */
+
+  width: 170px;
+  height: 36px;
+
+  /* Заголовки/H1 */
+  font-family: 'YS Display';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 28px;
+  line-height: 36px;
+  /* identical to box height, or 129% */
+
+  /* Main/Black 700 */
+  color: #2b2d33;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+}
+
+.ambasadors__avatar-container {
+  border: 1px solid red;
+  width: 150px;
+}
+.ambasadors__bluebell {
+  margin-right: 20px;
+}
+.ambasadors__manager {
+}
