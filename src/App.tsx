@@ -1,10 +1,12 @@
 import './App.scss';
 import Ambassadors from './components/Ambassadors/Ambassadors';
-
+import { Routes, Route } from 'react-router-dom';
 function App() {
   return (
     <>
-      <Ambassadors></Ambassadors>
+      <Routes>
+        <Route path="/" element={<Ambassadors />} />
+      </Routes>
     </>
   );
 }

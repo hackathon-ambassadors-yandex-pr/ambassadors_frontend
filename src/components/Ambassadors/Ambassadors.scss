@@ -40,3 +40,39 @@
 }
 .ambasadors__manager {
 }
+
+.ambasadors__menu {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  width: 944px;
+}
+.ambasadors__link {
+  color: black;
+}
+
+.ambasadors__search {
+  border: 1px solid red;
+  display: grid;
+  grid-template-columns: 4fr 2fr 1fr;
+}
+
+.ambasadors__search-name {
+  width: 300px;
+}
+
+.ambasadors__dates {
+  border: 1px solid red;
+}
+.ambasadors__date {
+  margin-right: 10px;
+}
+
+.ambasadors__buttons {
+  border: 1px solid green;
+  display: flex;
+  justify-content: end;
+}
+.ambasadors__button {
+  margin-right: 20px;
+}
