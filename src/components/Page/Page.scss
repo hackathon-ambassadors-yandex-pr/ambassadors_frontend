@@ -1,9 +1,10 @@
 .page {
-  border: 1px solid green;
   height: 40px;
   display: flex;
   align-items: center;
   padding-left: 20px;
+
+  align-self: flex-end;
 }
 
 .page__number {

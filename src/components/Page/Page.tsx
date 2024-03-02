@@ -1,6 +1,6 @@
-import './pageScroll.scss';
+import './Page.scss';
 
-function PageScroll() {
+function Page() {
   return (
     <div className="page">
       <div className="page__number">
@@ -19,4 +19,4 @@ function PageScroll() {
   );
 }
 
-export default PageScroll;
+export default Page;

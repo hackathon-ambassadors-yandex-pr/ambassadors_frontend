@@ -9,6 +9,7 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
+  border: none;
 }
 
 .table__checkbox {
@@ -17,7 +18,6 @@
 }
 .table__arrows {
   height: 25px;
-  border: 1px solid green;
 }
 
 .items {
