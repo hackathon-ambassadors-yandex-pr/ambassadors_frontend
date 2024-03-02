@@ -1,5 +1,6 @@
 import arrows from '../../images/container_vector_icon.png';
 import telegramm from '../../images/telegram.svg';
+import './Table.scss';
 
 function Table() {
   return (
