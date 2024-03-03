@@ -16,36 +16,4 @@ div {
   flex: 1;
   display: flex;
   flex-direction: row;
-  border: 1px solid green;
-}
-.header {
-  border: 1px solid green;
-  width: 25%;
-  display: flex;
-  flex-direction: column;
-  gap: 50px;
-  padding: 20px;
-}
-.header__logo {
-  width: 156px;
-  height: 28px;
-}
-
-.navigation {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  color: black;
-}
-
-.navigation__item {
-  color: black;
-}
-
-.header__exit {
-  align-self: flex-start;
-  justify-self: flex-end;
-  position: absolute;
-  bottom: 10%;
-  left: 2%;
 }

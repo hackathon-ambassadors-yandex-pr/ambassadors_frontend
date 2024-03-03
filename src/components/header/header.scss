@@ -1,0 +1,39 @@
+.header {
+  width: 25%;
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+  padding: 20px;
+}
+.header__logo {
+  width: 156px;
+  height: 28px;
+}
+
+.navigation {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  color: black;
+}
+
+.navigation__item {
+  color: black;
+}
+
+.header__exit {
+  position: absolute;
+  width: 108px;
+  height: 24px;
+  align-self: flex-start;
+  justify-self: flex-end;
+  text-align: center;
+  bottom: 10%;
+  left: 2%;
+  background-image: url(../../images/exit.svg);
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  background-color: white;
+}
