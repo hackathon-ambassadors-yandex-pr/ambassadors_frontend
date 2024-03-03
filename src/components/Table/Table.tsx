@@ -34,7 +34,7 @@ function Table() {
         <p className="items__name">Иванов Иван</p>
         <p className="items__promocod"> STEPA</p>
         <p className="items__date">15.12.24</p>
-        <p className="items__status">Новый</p>
+        <p className="items__status item__status_new">Новый</p>
         <p className="items__content">1</p>
         <p className="items__action">Новый амбасадор</p>
         <img className="items__telegramm" src={telegramm} />
@@ -44,7 +44,7 @@ function Table() {
         <p className="items__name">Иванов Иван</p>
         <p className="items__promocod"> STEPA</p>
         <p className="items__date">15.12.24</p>
-        <p className="items__status">Новый</p>
+        <p className="items__status item__status_confirmed">Уточняется</p>
         <p className="items__content">1</p>
         <p className="items__action">Новый амбасадор</p>
         <img className="items__telegramm" src={telegramm} />
@@ -54,9 +54,9 @@ function Table() {
         <p className="items__name">Иванов Иван</p>
         <p className="items__promocod"> STEPA</p>
         <p className="items__date">15.12.24</p>
-        <p className="items__status">Новый</p>
+        <p className="items__status item__status_archive">Архив</p>
         <p className="items__content">1</p>
-        <p className="items__action">Новый амбасадор</p>
+        <p className="items__action item__action_new">Новый амбасадор</p>
         <img className="items__telegramm" src={telegramm} />
       </div>
       <div className="items">
@@ -66,7 +66,7 @@ function Table() {
         <p className="items__date">15.12.24</p>
         <p className="items__status">Новый</p>
         <p className="items__content">1</p>
-        <p className="items__action">Новый амбасадор</p>
+        <p className="items__action item__action_no-answer">Новый амбасадор</p>
         <img className="items__telegramm" src={telegramm} />
       </div>
       <div className="items">
@@ -76,7 +76,7 @@ function Table() {
         <p className="items__date">15.12.24</p>
         <p className="items__status">Новый</p>
         <p className="items__content">1</p>
-        <p className="items__action">Новый амбасадор</p>
+        <p className="items__action item__action_suspended">Новый амбасадор</p>
         <img className="items__telegramm" src={telegramm} />
       </div>
       <div className="items">
