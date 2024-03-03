@@ -1,11 +1,12 @@
 import './Ambassadors.scss';
-import Page from '../Page/Page';
+
 import AmbasadorsMenu from '../AmbasadorsMenu/AmbasadorsMenu';
 import bluebell from '../../../src/images/notification.svg';
 import manager from '../../images/manager_photo.svg';
 import mail from '../../images/mail.svg';
 import filter from '../../images/filters.svg';
 import Table from '../Table/Table';
+import Page from '../Page/Page';
 
 function Ambassadors() {
   return (
@@ -36,7 +37,7 @@ function Ambassadors() {
       </div>
       <Table></Table>
       <button className="add-button"></button>
-      <Page></Page>
+      <Page />
     </div>
   );
 }
