@@ -1,5 +1,4 @@
 import './Ambassadors.scss';
-
 import AmbasadorsMenu from '../AmbasadorsMenu/AmbasadorsMenu';
 import bluebell from '../../../src/images/notification.svg';
 import manager from '../../images/manager_photo.svg';
