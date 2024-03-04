@@ -9,15 +9,13 @@ import AmbasadorsSearch from './components/AmbasadorsSearch/AmbasadorsSearch';
 import Table from './components/Table/Table';
 import Page from './components/Page/Page';
 import ButtonAdd from './components/buttons/buttonAdd';
-import Login from './components/Login/Login';
 
 function App() {
   return (
     <>
       <Routes>
-        <Route path="login" element={<Login />} />
+        <Route path="signin" element={<Login />} />
         <Route path="/" element={<Layout />}>
-          <Route path="signin" element={<Login />} />
           <Route
             index
             element={
