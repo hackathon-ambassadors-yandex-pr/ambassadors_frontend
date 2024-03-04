@@ -1,44 +1,11 @@
 import './Ambassadors.scss';
-import AmbasadorsMenu from '../AmbasadorsMenu/AmbasadorsMenu';
-import bluebell from '../../../src/images/notification.svg';
-import manager from '../../images/manager_photo.svg';
-import mail from '../../images/mail.svg';
-import filter from '../../images/filters.svg';
-import Table from '../Table/Table';
-import Page from '../Page/Page';
 
-function Ambassadors() {
-  return (
-    <div className="ambasadors">
-      <div className="ambasadors__main">
-        <h1 className="ambasadors__title">Амбассадоры</h1>
-        <div className="ambasadors__avatar-container">
-          <img className="ambasadors__bluebell" src={bluebell} />
-          <img className="ambasadors__manager" src={manager} />
-        </div>
-      </div>
-      <AmbasadorsMenu></AmbasadorsMenu>
-      <div className="ambasadors__search">
-        <input
-          type="search"
-          placeholder="Введите имя"
-          className="ambasadors__search-name"
-        />
-        <div className="ambasadors__dates">
-          <input type="date" className="ambasadors__date" />
+type HeaderProps = {
+  children: React.ReactNode;
+};
 
-          <input type="date" className="ambasadors__date" />
-        </div>
-        <div className="ambasadors__buttons">
-          <img className="ambasadors__button" src={mail} />
-          <img className="ambasadors__button" src={filter} />
-        </div>
-      </div>
-      <Table></Table>
-      <button className="add-button"></button>
-      <Page />
-    </div>
-  );
+function Ambassadors(props: HeaderProps) {
+  return <div className="ambasadors">{props.children}</div>;
 }
 
 export default Ambassadors;
