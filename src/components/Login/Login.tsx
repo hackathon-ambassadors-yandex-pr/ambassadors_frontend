@@ -86,6 +86,7 @@ export default function Login() {
               name="email"
               autoComplete="email"
               autoFocus
+              font-family="YS Text"
               sx={{ mt: 3, mb: 0 }}
             />
             <TextField
@@ -97,6 +98,7 @@ export default function Login() {
               type="password"
               id="password"
               autoComplete="current-password"
+              font-family="YS Text"
               sx={{ mt: 3, mb: 4 }}
             />
             <Grid container>
@@ -133,6 +135,7 @@ export default function Login() {
                   width: '248px',
                   height: '48px',
                   background: 'var(--Main-Blue-main, #5A9BFF)',
+                  textTransform: 'capitalize',
                 }}
               >
                 Войти
@@ -140,7 +143,7 @@ export default function Login() {
             </Box>
           </Box>
         </Box>
-        <Copyright sx={{ mt: 37, mb: 3 }} />
+        <Copyright sx={{ mt: 37, mb: 3, mr: 0 }} />
       </Container>
     </ThemeProvider>
   );
