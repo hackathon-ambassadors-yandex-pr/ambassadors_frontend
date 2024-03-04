@@ -1,47 +1,34 @@
-import logo from '/logo.svg';
 import './App.scss';
-import { Button, Typography } from '@mui/material';
-
-import { styled } from '@mui/material/styles';
-
-const MyButton = styled(Button)(({ theme }) => ({
-  width: 300,
-  color: theme.palette.success.main,
-}));
+import Ambassadors from './components/Ambassadors/Ambassadors';
+import Layout from './components/Layout/Layout';
+import { Routes, Route } from 'react-router-dom';
+import AmbasadorsMenu from './components/AmbasadorsMenu/AmbasadorsMenu';
+import AmbasadorsAvatar from './components/AmbasadorsAvatar/AmbasadorsAvatar';
+import AmbasadorsSearch from './components/AmbasadorsSearch/AmbasadorsSearch';
+import Table from './components/Table/Table';
+import Page from './components/Page/Page';
+import ButtonAdd from './components/buttons/buttonAdd';
 
 function App() {
   return (
     <>
-      <img src={logo}></img>
-      <div>Hello world</div>
-      <Typography>Hello World T</Typography>
-      <Typography variant="h1">H1 –YS Display Regular, 34/40</Typography>
-      <Typography variant="h1" fontWeight={'medium'}>
-        H1 –YS Display Regular, 34/40
-      </Typography>
-      <Typography variant="h2">H2 –YS Display Regular,24/40</Typography>
-      <Typography variant="h3">H3 –YS Display Regular, 20/120</Typography>
-      <Typography variant="h4">H4 –YS Display Regular, 20/120</Typography>
-      <Typography variant="caption">
-        caption –YS Display Regular, 20/120
-      </Typography>
-      <Typography variant="body1">body1 –YS Display Regular, 20/120</Typography>
-      <Typography variant="body2">body2 –YS Display Regular, 20/120</Typography>
-      <Typography variant="subtitle1">
-        subtitle1 –YS Display Regular, 20/120
-      </Typography>
-      <Typography variant="subtitle2">
-        subtitle2 –YS Display Regular, 20/120
-      </Typography>
-      <Button variant="text">Stock Button</Button>
-
-      <Button variant="outlined">Stock Button</Button>
-
-      <Button variant="contained">Stock Button</Button>
-      <Button variant="contained" color="error">
-        Stock Button
-      </Button>
-      <MyButton>My Button</MyButton>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route
+            index
+            element={
+              <Ambassadors>
+                <AmbasadorsAvatar></AmbasadorsAvatar>
+                <AmbasadorsMenu></AmbasadorsMenu>
+                <AmbasadorsSearch></AmbasadorsSearch>
+                <Table></Table>
+                <Page></Page>
+                <ButtonAdd></ButtonAdd>
+              </Ambassadors>
+            }
+          />
+        </Route>
+      </Routes>
     </>
   );
 }
