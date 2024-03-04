@@ -23,7 +23,90 @@
 }
 
 .popup__form {
+  position: relative;
   width: 880px;
   height: 344px;
-  border: 1px solid red;
+}
+
+.popup__form_select-open {
+  height: 676px;
+}
+
+.title {
+  color: var(--Main-Black-700, #2b2d33);
+
+  /* Заголовки/H1 */
+  font-family: 'YS Display';
+  font-size: 28px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 36px; /* 128.571% */
+  margin: 0;
+}
+
+.button-close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  border: none;
+  width: 24px;
+  height: 24px;
+  background-image: url(../../images/close_icon.svg);
+  background-repeat: no-repeat;
+  background-color: transparent;
+  background-position: center;
+}
+
+.subtitle {
+  color: var(--Main-Black-300, #b5b5b7);
+
+  /* Заголовки/H2 */
+  font-family: 'YS Display';
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 32px; /* 133.333% */
+}
+
+.popup__data {
+  display: flex;
+  gap: 48px;
+}
+
+.popup__course {
+  display: flex;
+  flex-direction: column;
+}
+
+.popup__label {
+  color: var(--Main-Black-700, #2b2d33);
+  /* Заголовки/H3 */
+  font-family: 'YS Display';
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px; /* 120% */
+  margin-bottom: 20px;
+}
+
+.popup__select-course {
+  display: flex;
+  width: 560px;
+  padding: 8px 12px;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 4px;
+  border: 1px solid var(--Main-Black-100, #dde0e4);
+  background: var(--Main-White, #fff);
+}
+
+.popup__select-gender {
+  display: flex;
+  width: 200px;
+  padding: 8px 12px;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 4px;
+  border: 1px solid var(--Main-Black-100, #dde0e4);
+  background: var(--Main-White, #fff);
 }

@@ -18,8 +18,8 @@ function App() {
             index
             element={
               <Ambassadors>
-                <AmbasadorsMenu></AmbasadorsMenu>
                 <AmbasadorsAvatar></AmbasadorsAvatar>
+                <AmbasadorsMenu></AmbasadorsMenu>
                 <AmbasadorsSearch></AmbasadorsSearch>
                 <Table></Table>
                 <Page></Page>
