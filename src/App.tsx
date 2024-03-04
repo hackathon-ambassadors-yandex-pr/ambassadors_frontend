@@ -29,6 +29,7 @@ function App() {
               </Ambassadors>
             }
           />
+          <Route path="test" element={<Ambassadors>Тест</Ambassadors>} />
         </Route>
       </Routes>
     </>
