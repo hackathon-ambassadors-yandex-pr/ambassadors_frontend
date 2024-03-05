@@ -1,14 +1,15 @@
 import './AmbasadorsMenu.scss';
 
-function AmbasadorsMenu() {
+type ItemProps = {
+  children: string[];
+};
+
+function AmbasadorsMenu(props: ItemProps) {
   return (
     <div className="ambasadors__menu">
-      <button className="ambasadors__link">Все</button>
-      <button className="ambasadors__link">Новый</button>
-      <button className="ambasadors__link">Активный</button>
-      <button className="ambasadors__link">Уточняется</button>
-      <button className="ambasadors__link">На паузе</button>
-      <button className="ambasadors__link">Архив</button>
+      {(props.children as unknown as string[]).map((element) => {
+        return <button className="ambasadors__link">{element}</button>;
+      })}
     </div>
   );
 }

@@ -11,6 +11,21 @@ import Page from './components/Page/Page';
 import ButtonAdd from './components/buttons/buttonAdd';
 
 function App() {
+  const names: Array<string> = [
+    'Все',
+    'Новый',
+    'Активный',
+    'Уточняется',
+    'На паузе',
+    'Архив',
+  ];
+
+  const data: Array<string> = [
+    'Контактные данные',
+    'Образование/работа',
+    'Дополнительные данные',
+  ];
+
   return (
     <>
       <Routes>
@@ -21,7 +36,7 @@ function App() {
             element={
               <Ambassadors>
                 <AmbasadorsAvatar></AmbasadorsAvatar>
-                <AmbasadorsMenu></AmbasadorsMenu>
+                <AmbasadorsMenu>{names}</AmbasadorsMenu>
                 <AmbasadorsSearch></AmbasadorsSearch>
                 <Table></Table>
                 <Page></Page>
@@ -29,7 +44,14 @@ function App() {
               </Ambassadors>
             }
           />
-          <Route path="test" element={<Ambassadors>Тест</Ambassadors>} />
+          <Route
+            path="test"
+            element={
+              <Ambassadors>
+                <AmbasadorsMenu>{data}</AmbasadorsMenu>
+              </Ambassadors>
+            }
+          />
         </Route>
       </Routes>
     </>

@@ -8,12 +8,11 @@ const mapDispatchToProps = {
 
 const connector = connect(undefined, mapDispatchToProps);
 
-const exportButtonAdd = connector(ButtonAdd);
-
 type AppProps = ConnectedProps<typeof connector>;
 /* eslint-disable */
 function ButtonAdd(props: AppProps) {
   const { dispatchShowModal } = props;
+  console.log(props);
 
   return (
     <button
@@ -25,5 +24,5 @@ function ButtonAdd(props: AppProps) {
   );
 }
 
-export default exportButtonAdd;
+export default connector(ButtonAdd);
 /* eslint-enable */
