@@ -1,7 +1,21 @@
 import { useState } from 'react';
 import './PopupFilter.scss';
-
+import { connect, ConnectedProps } from 'react-redux';
 import { useForm, SubmitHandler } from 'react-hook-form';
+import { hideModal } from '../../store/action';
+import { RootState } from '../../store/reducers';
+
+const mapStateToProps = (state: RootState) => ({
+  modal: state.modal.modal,
+});
+
+const mapDispatchToProps = {
+  dispatchHideModal: hideModal,
+};
+
+const connector = connect(mapStateToProps, mapDispatchToProps);
+
+type ModalProps = ConnectedProps<typeof connector>;
 
 enum GenderEnum {
   female = 'female',
@@ -43,8 +57,10 @@ interface IFormInput {
   courses: Courses;
   gender: GenderEnum;
 }
+/* eslint-disable */
+function PopupFilter(props: ModalProps) {
+  const { dispatchHideModal, modal } = props;
 
-function PopupFilter() {
   const { register, handleSubmit } = useForm<IFormInput>();
   const onSubmit: SubmitHandler<IFormInput> = (data) => console.log(data);
   const [selectOpen, setSelectOpen] = useState(true);
@@ -52,6 +68,14 @@ function PopupFilter() {
   function handleSelectOpen() {
     setSelectOpen(!selectOpen);
   }
+
+  if (!modal) {
+    return null;
+  }
+
+  const onCloseButtonClick = () => {
+    dispatchHideModal();
+  };
 
   return (
     <div className="popup">
@@ -63,7 +87,10 @@ function PopupFilter() {
           onSubmit={handleSubmit(onSubmit)}
         >
           <h1 className="title">Фильтрация</h1>
-          <button className="button-close"></button>
+          <button
+            className="button-close"
+            onClick={onCloseButtonClick}
+          ></button>
           <p className="subtitle">Выберите курс и пол</p>
           <div className="popup__data">
             <div className="popup__course">
@@ -131,10 +158,15 @@ function PopupFilter() {
               </select>
             </div>
           </div>
+          <div className="popup__buttons">
+            <button className="reset">Сбросить</button>
+            <button className="save">Сохранить</button>
+          </div>
         </form>
       </div>
     </div>
   );
 }
 
-export default PopupFilter;
+export default connector(PopupFilter);
+/* eslint-enable */
