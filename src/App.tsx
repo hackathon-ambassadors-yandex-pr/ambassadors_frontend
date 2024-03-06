@@ -7,6 +7,7 @@ import AmbasadorsMenu from './components/AmbasadorsMenu/AmbasadorsMenu';
 import AmbasadorsHeader from './components/AmbasadorsHeader/AmbasadorsHeader';
 import AmbasadorsSearch from './components/AmbasadorsSearch/AmbasadorsSearch';
 import Table from './components/Table/Table';
+import TableAmbasadors from './components/Table/TableAmbasadors';
 import Page from './components/Page/Page';
 import ButtonAdd from './components/buttons/buttonAdd';
 import AmbasadorsAvatar from './components/AmbasadorsHeader/AvatarAvatar';
@@ -59,6 +60,7 @@ function App() {
                   <AmbasadorsAvatar></AmbasadorsAvatar>
                 </AmbasadorsHeader>
                 <AmbasadorsMenu>{data}</AmbasadorsMenu>
+                <TableAmbasadors></TableAmbasadors>
               </Ambassadors>
             }
           />
