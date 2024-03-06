@@ -13,6 +13,11 @@
   padding: 20px;
 }
 
+.ambasadors__container {
+  display: flex;
+  align-items: center;
+}
+
 .ambasadors__title {
   width: 170px;
   height: 36px;
@@ -49,7 +54,12 @@
 }
 .ambasadors__link {
   color: black;
-  background-color: #f1f6ff;
+  background-color: transparent;
+  font-family: 'YS Display';
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 32px; /* 133.333% */
 }
 
 .ambasadors__search {
