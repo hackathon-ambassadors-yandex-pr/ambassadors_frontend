@@ -6,15 +6,21 @@ import './Layout.scss';
 
 interface filterpopup {
   filterpopup: boolean;
+  setfilterPopup: (value: boolean) => void;
   handlefilterpopup: (params: React.MouseEvent<HTMLElement>) => void;
 }
 
-const Layout = ({ filterpopup, handlefilterpopup }: filterpopup) => {
+const Layout = ({
+  filterpopup,
+  setfilterPopup,
+  handlefilterpopup,
+}: filterpopup) => {
   return (
     <div className="app">
       <div className="page__container">
         <PopupFilter
           filterpopup={filterpopup}
+          setfilterPopup={setfilterPopup}
           handlefilterpopup={handlefilterpopup}
         />
         <Header />

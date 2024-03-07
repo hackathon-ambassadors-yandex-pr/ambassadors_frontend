@@ -33,7 +33,7 @@ function App() {
     'Дополнительные данные',
   ];
 
-  const [filterpopup, setfilterPopup] = useState(false);
+  const [filterpopup, setfilterPopup] = useState<boolean>(false);
 
   const handlefilterpopup = () => {
     setfilterPopup(!filterpopup);
@@ -48,6 +48,7 @@ function App() {
           element={
             <Layout
               filterpopup={filterpopup}
+              setfilterPopup={setfilterPopup}
               handlefilterpopup={handlefilterpopup}
             />
           }

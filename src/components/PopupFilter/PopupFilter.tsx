@@ -1,7 +1,7 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import './PopupFilter.scss';
-
 import { useForm, SubmitHandler } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
 
 enum GenderEnum {
   female = 'female',
@@ -46,12 +46,24 @@ interface IFormInput {
 
 interface filterpopup {
   filterpopup: boolean;
+  setfilterPopup: (value: boolean) => void;
   handlefilterpopup: (params: React.MouseEvent<HTMLElement>) => void;
 }
 
-function PopupFilter({ filterpopup, handlefilterpopup }: filterpopup) {
+function PopupFilter({
+  filterpopup,
+  setfilterPopup,
+  handlefilterpopup,
+}: filterpopup) {
+  const navigate = useNavigate();
+
   const { register, handleSubmit } = useForm<IFormInput>();
-  const onSubmit: SubmitHandler<IFormInput> = (data) => console.log(data);
+
+  const onSubmit: SubmitHandler<IFormInput> = (data) => {
+    console.log(data);
+    navigate('test');
+    setfilterPopup(false);
+  };
   const [selectOpen, setSelectOpen] = useState(true);
 
   function handleSelectOpen() {
@@ -137,7 +149,7 @@ function PopupFilter({ filterpopup, handlefilterpopup }: filterpopup) {
             </div>
           </div>
           <div className="popup__buttons">
-            <button className="reset">Сбросить</button>
+            <input className="reset" type="reset" />
             <button className="save">Сохранить</button>
           </div>
         </form>
