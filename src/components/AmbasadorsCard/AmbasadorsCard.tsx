@@ -118,7 +118,7 @@ function AmbasadorsCard() {
         </div>
       </div>
       <div className="data-adress">
-        <label htmlFor="adress" className="label-item">
+        <label htmlFor="adress" className="label-item-adress">
           Адрес
         </label>
         <input
