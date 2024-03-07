@@ -2,13 +2,39 @@
 }
 .table-ambasadors__top {
   background-color: var(--Main-Black-100, #dde0e4);
-
   height: 44px;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
 }
 
 .table-ambasadors__text {
-  margin-left: 5px;
+  margin-left: 8px;
   margin-top: 10px;
+}
+
+.table-item {
+  background: var(--Main-White, #fff);
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+.table-item__name {
+  padding-left: 5px;
+}
+.table-item__type {
+  padding-left: 5px;
+}
+.table-item__status {
+  padding-left: 5px;
+}
+.table-item__link {
+  padding-left: 5px;
+}
+
+.table-item__link {
+  display: flex;
+  justify-content: space-between;
+}
+
+.table-item__file {
+  margin-right: 50px;
 }

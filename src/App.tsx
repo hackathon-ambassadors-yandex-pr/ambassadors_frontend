@@ -61,6 +61,7 @@ function App() {
                 </AmbasadorsHeader>
                 <AmbasadorsMenu>{data}</AmbasadorsMenu>
                 <TableAmbasadors></TableAmbasadors>
+                <Page></Page>
               </Ambassadors>
             }
           />
