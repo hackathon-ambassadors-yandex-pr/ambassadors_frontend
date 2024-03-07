@@ -13,6 +13,7 @@ import ButtonAdd from './components/buttons/buttonAdd';
 import AmbasadorsAvatar from './components/AmbasadorsHeader/AvatarAvatar';
 import AmbasadorsContainer from './components/AmbasadorsHeader/AmbasadorsContainer';
 import AmbasadorsContainerSelect from './components/AmbasadorsHeader/AmbasadorsContainerSelect';
+import { useState } from 'react';
 
 function App() {
   const names: Array<string> = [
@@ -30,11 +31,25 @@ function App() {
     'Дополнительные данные',
   ];
 
+  const [filterpopup, setfilterPopup] = useState(false);
+
+  const handlefilterpopup = () => {
+    setfilterPopup(!filterpopup);
+  };
+
   return (
     <>
       <Routes>
         <Route path="signin" element={<Login />} />
-        <Route path="/" element={<Layout />}>
+        <Route
+          path="/"
+          element={
+            <Layout
+              filterpopup={filterpopup}
+              handlefilterpopup={handlefilterpopup}
+            />
+          }
+        >
           <Route
             index
             element={
@@ -47,7 +62,10 @@ function App() {
                 <AmbasadorsSearch></AmbasadorsSearch>
                 <Table></Table>
                 <Page></Page>
-                <ButtonAdd></ButtonAdd>
+                <ButtonAdd
+                  filterpopup={filterpopup}
+                  handlefilterpopup={handlefilterpopup}
+                ></ButtonAdd>
               </Ambassadors>
             }
           />

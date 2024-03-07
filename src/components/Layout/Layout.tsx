@@ -4,11 +4,19 @@ import PopupFilter from '../PopupFilter/PopupFilter';
 import '../../App.scss';
 import './Layout.scss';
 
-const Layout = () => {
+interface filterpopup {
+  filterpopup: boolean;
+  handlefilterpopup: (params: React.MouseEvent<HTMLElement>) => void;
+}
+
+const Layout = ({ filterpopup, handlefilterpopup }: filterpopup) => {
   return (
     <div className="app">
       <div className="page__container">
-        <PopupFilter />
+        <PopupFilter
+          filterpopup={filterpopup}
+          handlefilterpopup={handlefilterpopup}
+        />
         <Header />
         <Outlet />
       </div>

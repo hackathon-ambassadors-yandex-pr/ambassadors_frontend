@@ -44,7 +44,12 @@ interface IFormInput {
   gender: GenderEnum;
 }
 
-function PopupFilter() {
+interface filterpopup {
+  filterpopup: boolean;
+  handlefilterpopup: (params: React.MouseEvent<HTMLElement>) => void;
+}
+
+function PopupFilter({ filterpopup, handlefilterpopup }: filterpopup) {
   const { register, handleSubmit } = useForm<IFormInput>();
   const onSubmit: SubmitHandler<IFormInput> = (data) => console.log(data);
   const [selectOpen, setSelectOpen] = useState(true);
@@ -54,7 +59,7 @@ function PopupFilter() {
   }
 
   return (
-    <div className="popup">
+    <div className={filterpopup ? 'popup' : 'popup__none'}>
       <div className="popup__main">
         <form
           className={
@@ -63,7 +68,7 @@ function PopupFilter() {
           onSubmit={handleSubmit(onSubmit)}
         >
           <h1 className="title">Фильтрация</h1>
-          <button className="button-close"></button>
+          <button className="button-close" onClick={handlefilterpopup}></button>
           <p className="subtitle">Выберите курс и пол</p>
           <div className="popup__data">
             <div className="popup__course">
