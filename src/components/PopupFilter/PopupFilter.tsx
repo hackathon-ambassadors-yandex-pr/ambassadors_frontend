@@ -1,7 +1,7 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import './PopupFilter.scss';
-
 import { useForm, SubmitHandler } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
 
 enum GenderEnum {
   female = 'female',
@@ -44,9 +44,26 @@ interface IFormInput {
   gender: GenderEnum;
 }
 
-function PopupFilter() {
+interface filterpopup {
+  filterpopup: boolean;
+  setfilterPopup: (value: boolean) => void;
+  handlefilterpopup: (params: React.MouseEvent<HTMLElement>) => void;
+}
+
+function PopupFilter({
+  filterpopup,
+  setfilterPopup,
+  handlefilterpopup,
+}: filterpopup) {
+  const navigate = useNavigate();
+
   const { register, handleSubmit } = useForm<IFormInput>();
-  const onSubmit: SubmitHandler<IFormInput> = (data) => console.log(data);
+
+  const onSubmit: SubmitHandler<IFormInput> = (data) => {
+    console.log(data);
+    navigate('test');
+    setfilterPopup(false);
+  };
   const [selectOpen, setSelectOpen] = useState(true);
 
   function handleSelectOpen() {
@@ -54,7 +71,7 @@ function PopupFilter() {
   }
 
   return (
-    <div className="popup">
+    <div className={filterpopup ? 'popup' : 'popup__none'}>
       <div className="popup__main">
         <form
           className={
@@ -63,7 +80,7 @@ function PopupFilter() {
           onSubmit={handleSubmit(onSubmit)}
         >
           <h1 className="title">Фильтрация</h1>
-          <button className="button-close"></button>
+          <button className="button-close" onClick={handlefilterpopup}></button>
           <p className="subtitle">Выберите курс и пол</p>
           <div className="popup__data">
             <div className="popup__course">
@@ -130,6 +147,10 @@ function PopupFilter() {
                 <option value="male">М</option>
               </select>
             </div>
+          </div>
+          <div className="popup__buttons">
+            <input className="reset" type="reset" />
+            <button className="save">Сохранить</button>
           </div>
         </form>
       </div>
