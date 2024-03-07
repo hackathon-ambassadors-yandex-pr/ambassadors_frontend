@@ -13,6 +13,8 @@ import ButtonAdd from './components/buttons/buttonAdd';
 import AmbasadorsAvatar from './components/AmbasadorsHeader/AvatarAvatar';
 import AmbasadorsContainer from './components/AmbasadorsHeader/AmbasadorsContainer';
 import AmbasadorsContainerSelect from './components/AmbasadorsHeader/AmbasadorsContainerSelect';
+import AmbasadorsCard from './components/AmbasadorsCard/AmbasadorsCard';
+
 import { useState } from 'react';
 
 function App() {
@@ -78,6 +80,7 @@ function App() {
                   <AmbasadorsAvatar></AmbasadorsAvatar>
                 </AmbasadorsHeader>
                 <AmbasadorsMenu>{data}</AmbasadorsMenu>
+                <AmbasadorsCard></AmbasadorsCard>
                 <TableAmbasadors></TableAmbasadors>
                 <Page></Page>
               </Ambassadors>
