@@ -37,7 +37,9 @@
   --pink: #ffbffd;
   --brown: #a99175;
 }
-
+#root {
+  height: 100%;
+}
 a {
   font-weight: 500;
   color: #646cff;
