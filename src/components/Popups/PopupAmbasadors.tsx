@@ -23,6 +23,30 @@ function PopupAmbasadors() {
         <p className="nik-telegramm__name">Ник Телеграма</p>
         <a href="https://t.me/sahsasoko">https://t.me/sahsasoko</a>
       </div>
+      <div className="status-and-platform">
+        <label className="label-content">
+          Платформа контента
+          <select className="select-content">
+            <option value="someOption">Отзыв</option>
+            <option value="otherOption">Хабр</option>
+            <option value="someOption">VC</option>
+            <option value="otherOption">Ютуб</option>
+            <option value="someOption">Отзыв</option>
+            <option value="otherOption">Телеграм</option>
+          </select>
+        </label>
+        <label className="label-content">
+          Платформа контента
+          <select className="select-content">
+            <option value="someOption">Отзыв</option>
+            <option value="otherOption">Хабр</option>
+            <option value="someOption">VC</option>
+            <option value="otherOption">Ютуб</option>
+            <option value="someOption">Отзыв</option>
+            <option value="otherOption">Телеграм</option>
+          </select>
+        </label>
+      </div>
 
       <ButtonsContainer className="popup__buttons">
         <ButtonCancel></ButtonCancel>
