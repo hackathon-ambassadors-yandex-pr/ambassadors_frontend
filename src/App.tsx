@@ -14,6 +14,9 @@ import AmbasadorsAvatar from './components/AmbasadorsHeader/AvatarAvatar';
 import AmbasadorsContainer from './components/AmbasadorsHeader/AmbasadorsContainer';
 import AmbasadorsContainerSelect from './components/AmbasadorsHeader/AmbasadorsContainerSelect';
 import AmbasadorsCard from './components/AmbasadorsCard/AmbasadorsCard';
+import ButtonsContainer from './components/buttons/ButtonsContainer';
+import ButtonSave from './components/buttons/ButtonSave';
+import ButtonCancel from './components/buttons/ButtonCancel';
 
 import { useState } from 'react';
 
@@ -83,6 +86,10 @@ function App() {
                 <AmbasadorsMenu>{data}</AmbasadorsMenu>
                 <AmbasadorsCard></AmbasadorsCard>
                 <TableAmbasadors></TableAmbasadors>
+                <ButtonsContainer className="ambasadors-buttons">
+                  <ButtonCancel></ButtonCancel>
+                  <ButtonSave></ButtonSave>
+                </ButtonsContainer>
                 <Page></Page>
               </Ambassadors>
             }
