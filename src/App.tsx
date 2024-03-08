@@ -76,7 +76,26 @@ function App() {
             }
           />
           <Route
-            path="test"
+            path="creation"
+            element={
+              <Ambassadors>
+                <AmbasadorsHeader>
+                  <AmbasadorsContainerSelect></AmbasadorsContainerSelect>
+                  <AmbasadorsAvatar></AmbasadorsAvatar>
+                </AmbasadorsHeader>
+                <AmbasadorsMenu>{data}</AmbasadorsMenu>
+                <AmbasadorsCard></AmbasadorsCard>
+                <TableAmbasadors></TableAmbasadors>
+                <ButtonsContainer className="ambasadors-buttons">
+                  <ButtonCancel></ButtonCancel>
+                  <ButtonSave></ButtonSave>
+                </ButtonsContainer>
+                <Page></Page>
+              </Ambassadors>
+            }
+          />
+          <Route
+            path="new"
             element={
               <Ambassadors>
                 <AmbasadorsHeader>

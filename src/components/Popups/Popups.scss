@@ -114,3 +114,45 @@
   border: 1px solid var(--Main-Black-100, #dde0e4);
   background: var(--Main-White, #fff);
 }
+
+.popop__title {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+.status {
+  width: 100px;
+  height: 24px;
+  padding: 4px, 8px, 4px, 8px;
+  border-radius: 4px;
+  gap: 10px;
+  background-color: rgba(194, 229, 206, 1);
+  text-align: center;
+}
+
+.popup__checkbox {
+  width: 24px;
+  height: 24px;
+}
+
+.popup__label-guide {
+  display: flex;
+  align-items: center;
+}
+
+.nik-telegramm__name {
+  //styleName: Основной текст/Body 1;
+  font-family: YS Text;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 20px;
+  letter-spacing: 0em;
+  text-align: center;
+}
+
+.nik-telegramm {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
