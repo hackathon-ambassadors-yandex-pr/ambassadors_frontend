@@ -29,7 +29,10 @@
 .popup__form {
   position: relative;
   width: 880px;
-  height: 344px;
+}
+
+.popup__container {
+  padding: 50px 85px 50px 85px;
 }
 
 .popup__form_select-open {
@@ -160,6 +163,7 @@
 .status-and-platform {
   display: flex;
   gap: 50px;
+  margin-bottom: 50px;
 }
 
 .label-content {
@@ -182,5 +186,48 @@
   padding: 8px, 12px, 8px, 12px;
   border-radius: 4px;
   border: 1px;
-  justify: space-between;
+}
+
+.link {
+  position: relative;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  display: flex;
+  gap: 100px;
+}
+.link__name {
+}
+.link__contaier {
+}
+.link__links {
+  display: inline-block;
+  word-wrap: break-word;
+  hyphens: auto;
+  white-space: normal;
+  width: 369px;
+  height: 60px;
+}
+.link__file {
+  display: flex;
+}
+.link__img {
+  margin-left: 30px;
+}
+
+.comment {
+  display: flex;
+  gap: 50px;
+}
+.comment__name {
+}
+.comment__textarea {
+  width: 372px;
+  height: 136px;
+  padding: 12px, 258px, 104px, 12px;
+  border-radius: 4px;
+  border: 1px;
+}
+
+.buttons {
+  margin-left: 45px;
 }
