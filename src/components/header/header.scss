@@ -4,7 +4,9 @@
   flex-direction: column;
   gap: 50px;
   padding: 20px;
+  position: relative;
 }
+
 .header__logo {
   width: 156px;
   height: 28px;
@@ -22,8 +24,10 @@
 }
 
 .header__exit {
+  border: none;
   position: absolute;
-  bottom: 3%;
+  bottom: 40px;
+  left: 20px;
   width: 108px;
   height: 24px;
   background-image: url(../../images/exit.svg);
@@ -32,4 +36,11 @@
   align-items: center;
   justify-content: flex-end;
   background-color: white;
+  color: var(--black);
+  transition: all 0.25s ease-in-out;
+
+  &:hover {
+    opacity: 0.8;
+    color: var(--blue);
+  }
 }
