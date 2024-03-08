@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import './PopupFilter.scss';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
+import ButtonsContainer from '../buttons/ButtonsContainer';
+import ButtonSave from '../buttons/ButtonSave';
+import ButtonCancel from '../buttons/ButtonCancel';
 
 enum GenderEnum {
   female = 'female',
@@ -148,10 +151,10 @@ function PopupFilter({
               </select>
             </div>
           </div>
-          <div className="popup__buttons">
-            <input className="reset" type="reset" />
-            <button className="save">Сохранить</button>
-          </div>
+          <ButtonsContainer>
+            <ButtonCancel></ButtonCancel>
+            <ButtonSave></ButtonSave>
+          </ButtonsContainer>
         </form>
       </div>
     </div>
