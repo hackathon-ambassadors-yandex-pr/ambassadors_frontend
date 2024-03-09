@@ -141,7 +141,7 @@ function PopopsFilter({ setfilterPopup, handlefilterpopup }: filterpopup) {
           </select>
         </div>
       </div>
-      <ButtonsContainer className="popup__buttons">
+      <ButtonsContainer className="popup__buttons-filter">
         <ButtonCancel></ButtonCancel>
         <ButtonSave></ButtonSave>
       </ButtonsContainer>

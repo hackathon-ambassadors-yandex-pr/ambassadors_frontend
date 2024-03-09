@@ -3,8 +3,8 @@ import Header from '../header/header';
 import Popups from '../Popups/Popups';
 import '../../App.scss';
 import './Layout.scss';
-//import PopopsFilter from '../Popups/PopopsFilter';
-import PopupAmbasadors from '../Popups/PopupAmbasadors';
+import PopopsFilter from '../Popups/PopopsFilter';
+//import PopupAmbasadors from '../Popups/PopupAmbasadors';
 
 interface filterpopup {
   filterpopup: boolean;
@@ -25,7 +25,10 @@ const Layout = ({
           setfilterPopup={setfilterPopup}
           handlefilterpopup={handlefilterpopup}
         >
-          <PopupAmbasadors />
+          <PopopsFilter
+            setfilterPopup={setfilterPopup}
+            handlefilterpopup={handlefilterpopup}
+          />
         </Popups>
         <Header />
         <Outlet />
