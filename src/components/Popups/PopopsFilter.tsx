@@ -53,7 +53,7 @@ interface filterpopup {
   handlefilterpopup: (params: React.MouseEvent<HTMLElement>) => void;
 }
 
-function PopopsFilter({ setfilterPopup, handlefilterpopup }: filterpopup) {
+function PopopsFilter({ setfilterPopup }: filterpopup) {
   const navigate = useNavigate();
 
   const { register, handleSubmit } = useForm<IFormInput>();
@@ -77,7 +77,7 @@ function PopopsFilter({ setfilterPopup, handlefilterpopup }: filterpopup) {
       onSubmit={handleSubmit(onSubmit)}
     >
       <h1 className="title">Фильтрация</h1>
-      <button className="button-close" onClick={handlefilterpopup}></button>
+
       <p className="subtitle">Выберите курс и пол</p>
       <div className="popup__data">
         <div className="popup__course">

@@ -25,10 +25,14 @@ const Layout = ({
           setfilterPopup={setfilterPopup}
           handlefilterpopup={handlefilterpopup}
         >
-          <PopopsFilter
-            setfilterPopup={setfilterPopup}
-            handlefilterpopup={handlefilterpopup}
-          />
+          {location.pathname === '/' ? (
+            <PopopsFilter
+              setfilterPopup={setfilterPopup}
+              handlefilterpopup={handlefilterpopup}
+            ></PopopsFilter>
+          ) : (
+            <></>
+          )}
         </Popups>
         <Header />
         <Outlet />

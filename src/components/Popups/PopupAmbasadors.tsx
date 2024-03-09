@@ -4,13 +4,21 @@ import ButtonCancel from '../buttons/ButtonCancel';
 import ButtonSave from '../buttons/ButtonSave';
 import { useState } from 'react';
 import Womans from '../../images/Womans.png';
+import { useNavigate } from 'react-router-dom';
 
-function PopupAmbasadors() {
+interface filterpopup {
+  setfilterPopup: (value: boolean) => void;
+}
+
+function PopupAmbasadors({ setfilterPopup }: filterpopup) {
   const [selectContent, setSelectContent] = useState<string>('');
   const [selectStatus, setSelectStatus] = useState<string>('');
 
+  const navigate = useNavigate();
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    navigate('creation');
+    setfilterPopup(false);
     console.log(selectContent);
     console.log(selectStatus);
   };
@@ -30,7 +38,6 @@ function PopupAmbasadors() {
             />
           </label>
         </div>
-        <button className="button-close"></button>
         <div className="nik-telegramm">
           <p className="nik-telegramm__name">Ник Телеграма</p>
           <a href="https://t.me/sahsasoko">https://t.me/sahsasoko</a>
