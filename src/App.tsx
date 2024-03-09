@@ -15,8 +15,8 @@ import AmbasadorsContainer from './components/AmbasadorsHeader/AmbasadorsContain
 import AmbasadorsContainerSelect from './components/AmbasadorsHeader/AmbasadorsContainerSelect';
 import AmbasadorsCard from './components/AmbasadorsCard/AmbasadorsCard';
 import ButtonsContainer from './components/buttons/ButtonsContainer';
-import ButtonSave from './components/buttons/ButtonSave';
-import ButtonCancel from './components/buttons/ButtonCancel';
+import ButtonCancelAmbasadors from './components/buttons/ButtonCancelAmbasadors';
+import ButtonsSaveAmbasadors from './components/buttons/ButtonsSaveAmbasadors';
 
 import { useState } from 'react';
 
@@ -90,8 +90,8 @@ function App() {
                   handlefilterpopup={handlefilterpopup}
                 ></TableAmbasadors>
                 <ButtonsContainer className="ambasadors-buttons">
-                  <ButtonCancel></ButtonCancel>
-                  <ButtonSave></ButtonSave>
+                  <ButtonCancelAmbasadors></ButtonCancelAmbasadors>
+                  <ButtonsSaveAmbasadors></ButtonsSaveAmbasadors>
                 </ButtonsContainer>
                 <Page></Page>
               </Ambassadors>
@@ -112,8 +112,8 @@ function App() {
                   handlefilterpopup={handlefilterpopup}
                 ></TableAmbasadors>
                 <ButtonsContainer className="ambasadors-buttons">
-                  <ButtonCancel></ButtonCancel>
-                  <ButtonSave></ButtonSave>
+                  <ButtonCancelAmbasadors></ButtonCancelAmbasadors>
+                  <ButtonsSaveAmbasadors></ButtonsSaveAmbasadors>
                 </ButtonsContainer>
                 <Page></Page>
               </Ambassadors>

@@ -1,10 +1,23 @@
 import './AmbasadorsCard.scss';
+import { useNavigate } from 'react-router-dom';
 
 function AmbasadorsCard() {
+  const navigate = useNavigate();
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    navigate('/new');
+    console.log('test');
+  };
+
   return (
     <>
       {location.pathname === '/creation' ? (
-        <form className="card-ambasadors">
+        <form
+          className="card-ambasadors"
+          id="formAmbasadors"
+          onSubmit={handleSubmit}
+        >
           <div className="data-fio">
             <input
               className="data-fio__lastname"
@@ -165,7 +178,11 @@ function AmbasadorsCard() {
           </div>
         </form>
       ) : (
-        <form className="card-ambasadors">
+        <form
+          className="card-ambasadors"
+          id="formAmbasadors"
+          onSubmit={handleSubmit}
+        >
           <div className="data-fio">
             <input
               className="data-fio__lastname"
