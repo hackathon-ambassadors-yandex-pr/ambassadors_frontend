@@ -65,13 +65,13 @@ function App() {
                   <AmbasadorsAvatar></AmbasadorsAvatar>
                 </AmbasadorsHeader>
                 <AmbasadorsMenu>{names}</AmbasadorsMenu>
-                <AmbasadorsSearch></AmbasadorsSearch>
-                <Table></Table>
-                <Page></Page>
-                <ButtonAdd
+                <AmbasadorsSearch
                   filterpopup={filterpopup}
                   handlefilterpopup={handlefilterpopup}
-                ></ButtonAdd>
+                ></AmbasadorsSearch>
+                <Table></Table>
+                <Page></Page>
+                <ButtonAdd></ButtonAdd>
               </Ambassadors>
             }
           />

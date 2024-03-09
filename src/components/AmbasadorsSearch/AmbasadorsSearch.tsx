@@ -1,7 +1,12 @@
 import mail from '../../images/mail.svg';
 import filter from '../../images/filters.svg';
+import './AmbasadorsSearch.scss';
+interface filterpopup {
+  filterpopup: boolean;
+  handlefilterpopup: (params: React.MouseEvent<HTMLElement>) => void;
+}
 
-function AmbasadorsSearch() {
+function AmbasadorsSearch({ handlefilterpopup }: filterpopup) {
   return (
     <div className="ambasadors__search">
       <input
@@ -16,7 +21,11 @@ function AmbasadorsSearch() {
       </div>
       <div className="ambasadors__buttons">
         <img className="ambasadors__button" src={mail} />
-        <img className="ambasadors__button" src={filter} />
+        <img
+          className="ambasadors__button"
+          src={filter}
+          onClick={handlefilterpopup}
+        />
       </div>
     </div>
   );
