@@ -4,7 +4,7 @@ import Popups from '../Popups/Popups';
 import '../../App.scss';
 import './Layout.scss';
 import PopopsFilter from '../Popups/PopopsFilter';
-//import PopupAmbasadors from '../Popups/PopupAmbasadors';
+import PopupAmbasadors from '../Popups/PopupAmbasadors';
 
 interface filterpopup {
   filterpopup: boolean;
@@ -26,12 +26,9 @@ const Layout = ({
           handlefilterpopup={handlefilterpopup}
         >
           {location.pathname === '/' ? (
-            <PopopsFilter
-              setfilterPopup={setfilterPopup}
-              handlefilterpopup={handlefilterpopup}
-            ></PopopsFilter>
+            <PopopsFilter setfilterPopup={setfilterPopup}></PopopsFilter>
           ) : (
-            <></>
+            <PopupAmbasadors setfilterPopup={setfilterPopup}></PopupAmbasadors>
           )}
         </Popups>
         <Header />

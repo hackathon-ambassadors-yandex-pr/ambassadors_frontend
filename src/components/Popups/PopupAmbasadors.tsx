@@ -10,7 +10,7 @@ interface filterpopup {
   setfilterPopup: (value: boolean) => void;
 }
 
-function PopupAmbasadors({ setfilterPopup }: filterpopup) {
+function PopupAmbasadors(props: filterpopup) {
   const [selectContent, setSelectContent] = useState<string>('');
   const [selectStatus, setSelectStatus] = useState<string>('');
 
@@ -18,7 +18,7 @@ function PopupAmbasadors({ setfilterPopup }: filterpopup) {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     navigate('creation');
-    setfilterPopup(false);
+    props.setfilterPopup(false);
     console.log(selectContent);
     console.log(selectStatus);
   };

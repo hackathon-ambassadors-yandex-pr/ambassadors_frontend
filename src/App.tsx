@@ -85,7 +85,10 @@ function App() {
                 </AmbasadorsHeader>
                 <AmbasadorsMenu>{data}</AmbasadorsMenu>
                 <AmbasadorsCard></AmbasadorsCard>
-                <TableAmbasadors></TableAmbasadors>
+                <TableAmbasadors
+                  filterpopup={filterpopup}
+                  handlefilterpopup={handlefilterpopup}
+                ></TableAmbasadors>
                 <ButtonsContainer className="ambasadors-buttons">
                   <ButtonCancel></ButtonCancel>
                   <ButtonSave></ButtonSave>
@@ -104,7 +107,10 @@ function App() {
                 </AmbasadorsHeader>
                 <AmbasadorsMenu>{data}</AmbasadorsMenu>
                 <AmbasadorsCard></AmbasadorsCard>
-                <TableAmbasadors></TableAmbasadors>
+                <TableAmbasadors
+                  filterpopup={filterpopup}
+                  handlefilterpopup={handlefilterpopup}
+                ></TableAmbasadors>
                 <ButtonsContainer className="ambasadors-buttons">
                   <ButtonCancel></ButtonCancel>
                   <ButtonSave></ButtonSave>

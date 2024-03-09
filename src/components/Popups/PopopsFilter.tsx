@@ -50,7 +50,6 @@ interface IFormInput {
 
 interface filterpopup {
   setfilterPopup: (value: boolean) => void;
-  handlefilterpopup: (params: React.MouseEvent<HTMLElement>) => void;
 }
 
 function PopopsFilter({ setfilterPopup }: filterpopup) {
