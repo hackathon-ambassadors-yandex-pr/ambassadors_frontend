@@ -1,21 +1,24 @@
 import { Outlet } from 'react-router-dom';
-import Header from '../header/header';
 import Popups from '../Popups/Popups';
+import Header from '../Header/Header';
 import '../../App.scss';
 import './Layout.scss';
 import PopopsFilter from '../Popups/PopopsFilter';
 import PopupAmbasadors from '../Popups/PopupAmbasadors';
+import React from 'react';
 
 interface filterpopup {
   filterpopup: boolean;
   setfilterPopup: (value: boolean) => void;
   handlefilterpopup: (params: React.MouseEvent<HTMLElement>) => void;
+  onLoggedIn: (loggedIn: boolean) => void;
 }
 
 const Layout = ({
   filterpopup,
   setfilterPopup,
   handlefilterpopup,
+  onLoggedIn,
 }: filterpopup) => {
   return (
     <div className="app">
@@ -31,7 +34,9 @@ const Layout = ({
             <PopupAmbasadors setfilterPopup={setfilterPopup}></PopupAmbasadors>
           )}
         </Popups>
-        <Header />
+
+        <Header onLoggedIn={onLoggedIn} />
+
         <Outlet />
       </div>
     </div>

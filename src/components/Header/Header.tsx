@@ -1,12 +1,19 @@
 import logo from '../../images/logo.svg';
-import './header.scss';
+import './Header.scss';
 import { NavLink } from 'react-router-dom';
 
-function Header() {
+interface HeaderProps {
+  onLoggedIn: (loggedIn: boolean) => void;
+}
+
+function Header({ onLoggedIn }: HeaderProps) {
+  const handleExit = () => {
+    onLoggedIn(false);
+  };
   return (
     <div className="header">
       <NavLink to="/">
-        <img src={logo} className="header__logo" />
+        <img alt="Логотип" src={logo} className="header__logo" />
       </NavLink>
       <nav className="navigation">
         <NavLink to="#" className="navigation__item">
@@ -25,7 +32,9 @@ function Header() {
           Аналитика
         </NavLink>
       </nav>
-      <button className="header__exit">Выход</button>
+      <button onClick={handleExit} className="header__exit">
+        Выход
+      </button>
     </div>
   );
 }

@@ -2,7 +2,7 @@ import './App.scss';
 import Login from './components/Login/Login';
 import Ambassadors from './components/Ambassadors/Ambassadors';
 import Layout from './components/Layout/Layout';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import AmbasadorsMenu from './components/AmbasadorsMenu/AmbasadorsMenu';
 import AmbasadorsHeader from './components/AmbasadorsHeader/AmbasadorsHeader';
 import AmbasadorsSearch from './components/AmbasadorsSearch/AmbasadorsSearch';
@@ -17,10 +17,18 @@ import AmbasadorsCard from './components/AmbasadorsCard/AmbasadorsCard';
 import ButtonsContainer from './components/buttons/ButtonsContainer';
 import ButtonCancelAmbasadors from './components/buttons/ButtonCancelAmbasadors';
 import ButtonsSaveAmbasadors from './components/buttons/ButtonsSaveAmbasadors';
+import { CurrentUserContext } from './contexts/CurrentUserContext';
 
-import { useState } from 'react';
+import React, { useState } from 'react';
+import ProtectedRoute from './components/ProtectedRouter/ProtectedRouter';
 
 function App() {
+  const [currentUser] = useState({
+    name: 'Загрузка...',
+    about: 'Загрузка...',
+  });
+  const [loggedIn, setLoggedIn] = useState(false);
+
   const names: Array<string> = [
     'Все',
     'Новый',
@@ -43,16 +51,27 @@ function App() {
   };
 
   return (
-    <>
+    <CurrentUserContext.Provider value={currentUser}>
       <Routes>
-        <Route path="signin" element={<Login />} />
+        <Route
+          path="signin"
+          element={
+            !loggedIn ? <Login onLoggedIn={setLoggedIn} /> : <Navigate to="/" />
+          }
+        />
         <Route
           path="/"
           element={
-            <Layout
-              filterpopup={filterpopup}
-              setfilterPopup={setfilterPopup}
-              handlefilterpopup={handlefilterpopup}
+            <ProtectedRoute
+              element={
+                <Layout
+                  onLoggedIn={setLoggedIn}
+                  filterpopup={filterpopup}
+                  setfilterPopup={setfilterPopup}
+                  handlefilterpopup={handlefilterpopup}
+                />
+              }
+              isLoggedIn={loggedIn}
             />
           }
         >
@@ -121,7 +140,7 @@ function App() {
           />
         </Route>
       </Routes>
-    </>
+    </CurrentUserContext.Provider>
   );
 }
 
