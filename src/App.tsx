@@ -14,6 +14,9 @@ import AmbasadorsAvatar from './components/AmbasadorsHeader/AvatarAvatar';
 import AmbasadorsContainer from './components/AmbasadorsHeader/AmbasadorsContainer';
 import AmbasadorsContainerSelect from './components/AmbasadorsHeader/AmbasadorsContainerSelect';
 import AmbasadorsCard from './components/AmbasadorsCard/AmbasadorsCard';
+import ButtonsContainer from './components/buttons/ButtonsContainer';
+import ButtonCancelAmbasadors from './components/buttons/ButtonCancelAmbasadors';
+import ButtonsSaveAmbasadors from './components/buttons/ButtonsSaveAmbasadors';
 import { CurrentUserContext } from './contexts/CurrentUserContext';
 
 import React, { useState } from 'react';
@@ -81,18 +84,18 @@ function App() {
                   <AmbasadorsAvatar></AmbasadorsAvatar>
                 </AmbasadorsHeader>
                 <AmbasadorsMenu>{names}</AmbasadorsMenu>
-                <AmbasadorsSearch></AmbasadorsSearch>
-                <Table></Table>
-                <Page></Page>
-                <ButtonAdd
+                <AmbasadorsSearch
                   filterpopup={filterpopup}
                   handlefilterpopup={handlefilterpopup}
-                ></ButtonAdd>
+                ></AmbasadorsSearch>
+                <Table></Table>
+                <Page></Page>
+                <ButtonAdd></ButtonAdd>
               </Ambassadors>
             }
           />
           <Route
-            path="test"
+            path="creation"
             element={
               <Ambassadors>
                 <AmbasadorsHeader>
@@ -101,7 +104,36 @@ function App() {
                 </AmbasadorsHeader>
                 <AmbasadorsMenu>{data}</AmbasadorsMenu>
                 <AmbasadorsCard></AmbasadorsCard>
-                <TableAmbasadors></TableAmbasadors>
+                <TableAmbasadors
+                  filterpopup={filterpopup}
+                  handlefilterpopup={handlefilterpopup}
+                ></TableAmbasadors>
+                <ButtonsContainer className="ambasadors-buttons">
+                  <ButtonCancelAmbasadors></ButtonCancelAmbasadors>
+                  <ButtonsSaveAmbasadors></ButtonsSaveAmbasadors>
+                </ButtonsContainer>
+                <Page></Page>
+              </Ambassadors>
+            }
+          />
+          <Route
+            path="new"
+            element={
+              <Ambassadors>
+                <AmbasadorsHeader>
+                  <AmbasadorsContainerSelect></AmbasadorsContainerSelect>
+                  <AmbasadorsAvatar></AmbasadorsAvatar>
+                </AmbasadorsHeader>
+                <AmbasadorsMenu>{data}</AmbasadorsMenu>
+                <AmbasadorsCard></AmbasadorsCard>
+                <TableAmbasadors
+                  filterpopup={filterpopup}
+                  handlefilterpopup={handlefilterpopup}
+                ></TableAmbasadors>
+                <ButtonsContainer className="ambasadors-buttons">
+                  <ButtonCancelAmbasadors></ButtonCancelAmbasadors>
+                  <ButtonsSaveAmbasadors></ButtonsSaveAmbasadors>
+                </ButtonsContainer>
                 <Page></Page>
               </Ambassadors>
             }

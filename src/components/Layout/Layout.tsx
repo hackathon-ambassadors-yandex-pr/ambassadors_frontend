@@ -1,8 +1,11 @@
 import { Outlet } from 'react-router-dom';
-import Header from '../header/header';
-import PopupFilter from '../PopupFilter/PopupFilter';
+import Popups from '../Popups/Popups';
+import Header from '../Header/Header';
 import '../../App.scss';
 import './Layout.scss';
+import PopopsFilter from '../Popups/PopopsFilter';
+import PopupAmbasadors from '../Popups/PopupAmbasadors';
+import React from 'react';
 
 interface filterpopup {
   filterpopup: boolean;
@@ -20,12 +23,20 @@ const Layout = ({
   return (
     <div className="app">
       <div className="page__container">
-        <PopupFilter
+        <Popups
           filterpopup={filterpopup}
           setfilterPopup={setfilterPopup}
           handlefilterpopup={handlefilterpopup}
-        />
+        >
+          {location.pathname === '/' ? (
+            <PopopsFilter setfilterPopup={setfilterPopup}></PopopsFilter>
+          ) : (
+            <PopupAmbasadors setfilterPopup={setfilterPopup}></PopupAmbasadors>
+          )}
+        </Popups>
+
         <Header onLoggedIn={onLoggedIn} />
+
         <Outlet />
       </div>
     </div>

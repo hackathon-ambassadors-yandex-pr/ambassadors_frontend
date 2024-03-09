@@ -1,12 +1,13 @@
 import '../buttons/buttonAdd';
+import { useNavigate } from 'react-router-dom';
 
-interface filterpopup {
-  filterpopup: boolean;
-  handlefilterpopup: (params: React.MouseEvent<HTMLElement>) => void;
-}
+function ButtonAdd() {
+  const navigate = useNavigate();
+  const handleButtonPlus = () => {
+    navigate('creation');
+  };
 
-function ButtonAdd({ handlefilterpopup }: filterpopup) {
-  return <button className="add-button" onClick={handlefilterpopup}></button>;
+  return <button className="add-button" onClick={handleButtonPlus}></button>;
 }
 
 export default ButtonAdd;

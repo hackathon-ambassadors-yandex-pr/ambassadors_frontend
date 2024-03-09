@@ -1,5 +1,5 @@
 import logo from '../../images/logo.svg';
-import './header.scss';
+import './Header.scss';
 import { NavLink } from 'react-router-dom';
 
 interface HeaderProps {
@@ -12,7 +12,9 @@ function Header({ onLoggedIn }: HeaderProps) {
   };
   return (
     <div className="header">
-      <img alt="Логотип" src={logo} className="header__logo" />
+      <NavLink to="/">
+        <img alt="Логотип" src={logo} className="header__logo" />
+      </NavLink>
       <nav className="navigation">
         <NavLink to="#" className="navigation__item">
           Амбассадоры
