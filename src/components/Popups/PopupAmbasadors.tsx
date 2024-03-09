@@ -17,7 +17,7 @@ function PopupAmbasadors(props: filterpopup) {
   const navigate = useNavigate();
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    navigate('creation');
+    navigate('new');
     props.setfilterPopup(false);
     console.log(selectContent);
     console.log(selectStatus);
