@@ -1,7 +1,6 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import './Popups.scss';
 import { useForm, SubmitHandler } from 'react-hook-form';
-import { useNavigate } from 'react-router-dom';
 
 import ButtonsContainer from '../buttons/ButtonsContainer';
 import ButtonSave from '../buttons/ButtonSave';
@@ -53,13 +52,10 @@ interface filterpopup {
 }
 
 function PopopsFilter({ setfilterPopup }: filterpopup) {
-  const navigate = useNavigate();
-
   const { register, handleSubmit } = useForm<IFormInput>();
 
   const onSubmit: SubmitHandler<IFormInput> = (data) => {
     console.log(data);
-    navigate('creation');
     setfilterPopup(false);
   };
   const [selectOpen, setSelectOpen] = useState(true);
