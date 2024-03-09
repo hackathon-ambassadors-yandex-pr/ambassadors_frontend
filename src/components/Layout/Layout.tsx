@@ -8,12 +8,14 @@ interface filterpopup {
   filterpopup: boolean;
   setfilterPopup: (value: boolean) => void;
   handlefilterpopup: (params: React.MouseEvent<HTMLElement>) => void;
+  onLoggedIn: (loggedIn: boolean) => void;
 }
 
 const Layout = ({
   filterpopup,
   setfilterPopup,
   handlefilterpopup,
+  onLoggedIn,
 }: filterpopup) => {
   return (
     <div className="app">
@@ -23,7 +25,7 @@ const Layout = ({
           setfilterPopup={setfilterPopup}
           handlefilterpopup={handlefilterpopup}
         />
-        <Header />
+        <Header onLoggedIn={onLoggedIn} />
         <Outlet />
       </div>
     </div>

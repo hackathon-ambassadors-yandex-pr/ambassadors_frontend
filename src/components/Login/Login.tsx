@@ -1,43 +1,89 @@
-import * as React from 'react';
+import React from 'react';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
 import Link from '@mui/material/Link';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
-import authLogo from '../../images/auth-logo.svg';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import {
+  Controller,
+  FormProvider,
+  SubmitHandler,
+  useForm,
+  useFormState,
+} from 'react-hook-form';
+import { emailValidation, passwordValidation } from './validate.ts';
+import Copyright from '../Copyright/Copyright';
+
+import authLogo from '../../images/auth-logo.svg';
 import './Login.scss';
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-function Copyright(props: any) {
-  return (
-    <Typography
-      variant="body2"
-      color="text.secondary"
-      align="center"
-      {...props}
-    >
-      <Link color="inherit" href="#">
-        Справка и поддержка
-      </Link>{' '}
-      {'© 2001-2024, Яндекс'}
-    </Typography>
-  );
+interface LoginProps {
+  onLoggedIn: (loggedIn: boolean) => void;
 }
 
-const defaultTheme = createTheme();
+interface ISignInFields {
+  email: string;
+  password: string;
+}
 
-export default function Login() {
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
+interface IUser {
+  email: string;
+  password: string;
+}
+
+const userArray: IUser[] = [
+  {
+    email: 'admin@mail.com',
+    password: '123456',
+  },
+  {
+    email: 'test@mail.com',
+    password: '123456',
+  },
+];
+
+/**
+ *
+ * @param onLoggedIn - Функция установки состояния пользователя при успешной авторизации
+ * @constructor
+ */
+const Login = ({ onLoggedIn }: LoginProps) => {
+  const defaultTheme = createTheme();
+  const methods = useForm<ISignInFields>({
+    defaultValues: {
+      email: '',
+      password: '',
+    },
+  });
+  const { control, handleSubmit, setError } = methods;
+
+  const { errors } = useFormState({
+    control,
+  });
+
+  const setLogin = () => {
+    // console.log("setLogin")
+    console.log(onLoggedIn);
+    onLoggedIn(true);
+  };
+
+  const checkUser = (email: string, password: string) => {
+    return userArray.some((data: IUser) => {
+      return data.email === email && data.password === password;
     });
+  };
+
+  const onSubmit: SubmitHandler<ISignInFields> = (data) => {
+    checkUser(data.email.toLowerCase(), data.password.toLowerCase())
+      ? setLogin()
+      : setError('email', {
+          type: 'custom',
+          message: `Пользователь не найден или пароль введен не верно`,
+        });
   };
 
   return (
@@ -65,86 +111,112 @@ export default function Login() {
           >
             Войдите в аккаунт
           </Typography>
-          <Box
-            component="form"
-            onSubmit={handleSubmit}
-            noValidate
-            sx={{
-              mt: 1,
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'center',
-              width: '390px',
-            }}
-          >
-            <TextField
-              margin="normal"
-              required
-              fullWidth
-              id="email"
-              label="Введите почту"
-              name="email"
-              autoComplete="email"
-              autoFocus
-              font-family="YS Text"
-              sx={{ mt: 3, mb: 0 }}
-            />
-            <TextField
-              margin="normal"
-              required
-              fullWidth
-              name="password"
-              label="Введите пароль"
-              type="password"
-              id="password"
-              autoComplete="current-password"
-              font-family="YS Text"
-              sx={{ mt: 3, mb: 4 }}
-            />
-            <Grid container>
-              <Grid item xs>
-                <Link
-                  underline="none"
-                  fontFamily="YS Display"
-                  fontSize={'20px'}
-                  lineHeight={'24px'}
-                  fontWeight={'400'}
-                  href="#"
-                  variant="caption"
-                  color="var(--Main-Blue-main, #5A9BFF)"
-                >
-                  Не помню пароль
-                </Link>
-              </Grid>
-            </Grid>
+          <FormProvider {...methods}>
             <Box
+              component="form"
+              //onSubmit={() => null}
+              onSubmit={handleSubmit(onSubmit)}
+              //noValidate
               sx={{
+                mt: 1,
                 display: 'flex',
                 flexDirection: 'column',
                 alignItems: 'center',
+                width: '390px',
               }}
             >
-              <Button
-                type="submit"
-                size="small"
-                disableElevation
-                variant="contained"
+              <Controller
+                name="email"
+                control={control}
+                rules={emailValidation}
+                render={({ field: { value, onChange } }) => (
+                  <TextField
+                    margin="normal"
+                    required
+                    fullWidth
+                    id="email"
+                    label="Введите почту"
+                    autoComplete="email"
+                    onChange={onChange}
+                    value={value}
+                    autoFocus
+                    sx={{ mt: 3, mb: 0 }}
+                    error={!!errors.email?.message}
+                    helperText={errors?.email?.message}
+                  />
+                )}
+              />
+              <Controller
+                name="password"
+                rules={passwordValidation}
+                control={control}
+                render={({ field: { value, onChange } }) => (
+                  <TextField
+                    margin="normal"
+                    required
+                    fullWidth
+                    // name="password"
+                    label="Введите пароль"
+                    type="password"
+                    id="password"
+                    autoComplete="current-password"
+                    // font-family="YS Text"
+                    sx={{ mt: 3, mb: 4 }}
+                    onChange={onChange}
+                    value={value}
+                    error={!!errors.password?.message}
+                    helperText={errors?.password?.message}
+                  />
+                )}
+              />
+
+              <Grid container>
+                <Grid item xs>
+                  <Link
+                    underline="none"
+                    fontFamily="YS Display"
+                    fontSize={'20px'}
+                    lineHeight={'24px'}
+                    fontWeight={'400'}
+                    href="#"
+                    variant="caption"
+                    color="var(--Main-Blue-main, #5A9BFF)"
+                  >
+                    Не помню пароль
+                  </Link>
+                </Grid>
+              </Grid>
+              <Box
                 sx={{
-                  mt: 3,
-                  mb: 2,
-                  width: '248px',
-                  height: '48px',
-                  background: 'var(--Main-Blue-main, #5A9BFF)',
-                  textTransform: 'capitalize',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  alignItems: 'center',
                 }}
               >
-                Войти
-              </Button>
+                <Button
+                  type="submit"
+                  size="small"
+                  disableElevation={true}
+                  variant="contained"
+                  //onClick={() => handleSubmit(submit)}
+                  sx={{
+                    mt: 3,
+                    mb: 2,
+                    width: '248px',
+                    height: '48px',
+                    background: 'var(--Main-Blue-main, #5A9BFF)',
+                    textTransform: 'capitalize',
+                  }}
+                >
+                  Войти
+                </Button>
+              </Box>
             </Box>
-          </Box>
+          </FormProvider>
         </Box>
-        <Copyright sx={{ mt: 37, mb: 3, mr: 0 }} />
+        <Copyright />
       </Container>
     </ThemeProvider>
   );
-}
+};
+export default Login;
