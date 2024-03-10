@@ -61,7 +61,7 @@ Project manager – Тарабуткина Юлиана (ТГ [@Juliana_jull](ht
 
 Бублик Михаил (ТГ [@Boymit](https://t.me/Boymit))
 
-*системные аналитики
+### Системные аналитики:
 
 Сканави Павел (ТГ [@Reds_on_tour](https://t.me/Reds_on_tour)) - Lead
 
