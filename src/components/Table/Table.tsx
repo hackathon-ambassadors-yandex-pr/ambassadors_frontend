@@ -17,7 +17,7 @@ function Table() {
         <img className="table__arrows" src={arrows} />
         <p className="table__text">Действие</p>
         <img className="table__arrows" src={arrows} />
-        <p className="table__text">телеграмм</p>
+        <p className="table__text">Телеграмм</p>
       </div>
       <div className="items">
         <input type="checkbox" className="items__checkbox" />
