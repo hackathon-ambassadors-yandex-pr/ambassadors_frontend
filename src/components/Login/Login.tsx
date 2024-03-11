@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
@@ -20,9 +20,10 @@ import Copyright from '../Copyright/Copyright';
 
 import authLogo from '../../images/auth-logo.svg';
 import './Login.scss';
+import { AxiosResponse } from 'axios';
 
-interface LoginProps {
-  onLoggedIn: (loggedIn: boolean) => void;
+interface ILoginProps {
+  onLogin: (email: string, password: string) => Promise<AxiosResponse>;
 }
 
 interface ISignInFields {
@@ -30,29 +31,16 @@ interface ISignInFields {
   password: string;
 }
 
-interface IUser {
-  email: string;
-  password: string;
-}
-
-const userArray: IUser[] = [
-  {
-    email: 'admin@mail.com',
-    password: '123456',
-  },
-  {
-    email: 'test@mail.com',
-    password: '123456',
-  },
-];
-
 /**
  *
  * @param onLoggedIn - Функция установки состояния пользователя при успешной авторизации
  * @constructor
  */
-const Login = ({ onLoggedIn }: LoginProps) => {
+const Login = ({ onLogin }: ILoginProps) => {
   const defaultTheme = createTheme();
+
+  const [isLoading, setIsLoading] = useState(false);
+
   const methods = useForm<ISignInFields>({
     defaultValues: {
       email: '',
@@ -60,30 +48,29 @@ const Login = ({ onLoggedIn }: LoginProps) => {
     },
   });
   const { control, handleSubmit, setError } = methods;
-
   const { errors } = useFormState({
     control,
   });
 
-  const setLogin = () => {
-    // console.log("setLogin")
-    console.log(onLoggedIn);
-    onLoggedIn(true);
-  };
-
-  const checkUser = (email: string, password: string) => {
-    return userArray.some((data: IUser) => {
-      return data.email === email && data.password === password;
-    });
-  };
-
   const onSubmit: SubmitHandler<ISignInFields> = (data) => {
-    checkUser(data.email.toLowerCase(), data.password.toLowerCase())
-      ? setLogin()
-      : setError('email', {
-          type: 'custom',
-          message: `Пользователь не найден или пароль введен не верно`,
-        });
+    setIsLoading(true);
+    onLogin(data.email, data.password)
+      .catch((res) => {
+        if (res.status === 401) {
+          setError('email', {
+            type: 'custom',
+            message: `Пользователь не найден или пароль введен не верно`,
+          });
+        } else {
+          setError('email', {
+            type: 'custom',
+            message: `Ошибка сервера`,
+          });
+        }
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
   };
 
   return (
@@ -198,6 +185,7 @@ const Login = ({ onLoggedIn }: LoginProps) => {
                   size="small"
                   disableElevation={true}
                   variant="contained"
+                  disabled={isLoading}
                   //onClick={() => handleSubmit(submit)}
                   sx={{
                     mt: 3,

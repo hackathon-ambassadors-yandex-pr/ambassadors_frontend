@@ -14,7 +14,7 @@ const ProtectedRouteElement: FC<ProtectedRouteElementProps> = ({
   return isLoggedIn ? (
     React.cloneElement(element, props)
   ) : (
-    <Navigate to="/signin" replace={true} />
+    <Navigate to="/" replace={true} />
   );
 };
 

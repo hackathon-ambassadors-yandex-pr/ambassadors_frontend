@@ -2,7 +2,7 @@ import './App.scss';
 import Login from './components/Login/Login';
 import Ambassadors from './components/Ambassadors/Ambassadors';
 import Layout from './components/Layout/Layout';
-import { Routes, Route, Navigate } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import AmbasadorsMenu from './components/AmbasadorsMenu/AmbasadorsMenu';
 import AmbasadorsHeader from './components/AmbasadorsHeader/AmbasadorsHeader';
 import AmbasadorsSearch from './components/AmbasadorsSearch/AmbasadorsSearch';
@@ -19,15 +19,16 @@ import ButtonCancelAmbasadors from './components/buttons/ButtonCancelAmbasadors'
 import ButtonsSaveAmbasadors from './components/buttons/ButtonsSaveAmbasadors';
 import { CurrentUserContext } from './contexts/CurrentUserContext';
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import ProtectedRoute from './components/ProtectedRouter/ProtectedRouter';
+import MainApi from './utils/MainApi.ts';
 
 function App() {
-  const [currentUser] = useState({
-    name: 'Загрузка...',
-    about: 'Загрузка...',
+  const [currentUser, setCurrentUser] = useState<{ email: string }>({
+    email: 'Загрузка...',
   });
   const [loggedIn, setLoggedIn] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   const names: Array<string> = [
     'Все',
@@ -50,22 +51,76 @@ function App() {
     setfilterPopup(!filterpopup);
   };
 
+  /**
+   *
+   */
+  useEffect(() => {
+    const tokenRefresh = localStorage.getItem('refresh');
+    console.log('tokenRefresh ', tokenRefresh);
+    if (tokenRefresh) {
+      MainApi.tokensRefresh(tokenRefresh)
+        .then((res) => {
+          console.log(res);
+          localStorage.setItem('refresh', res.data.refresh);
+          localStorage.setItem('access', res.data.access);
+          setLoggedIn(true);
+        })
+        .catch(() => {
+          handleLogout();
+          //navigate("/signin", {replace: true})
+        })
+        .finally(() => setIsLoading(false));
+    } else {
+      setIsLoading(false);
+      //navigate("/signin", {replace: true})
+    }
+  }, []);
+
+  /**
+   * Авторизация пользователя
+   * @param email
+   */
+  const handleAuthorization = (email: string) => {
+    setLoggedIn(true);
+    setCurrentUser({ email });
+  };
+
+  /**
+   * Аутентификация Пользователя
+   * @param email
+   * @param password
+   */
+  const handleLogin = async (email: string, password: string) => {
+    return await MainApi.signIn(email, password).then((res) => {
+      console.log(res);
+      localStorage.setItem('refresh', res.data.refresh);
+      localStorage.setItem('access', res.data.access);
+      handleAuthorization(email);
+      return res;
+    });
+  };
+
+  /**
+   * Выход пользователя
+   */
+  const handleLogout = () => {
+    localStorage.removeItem('refresh');
+    localStorage.removeItem('access');
+    setLoggedIn(false);
+  };
+  if (!isLoading && !loggedIn) {
+    return <Login onLogin={handleLogin} />;
+  }
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <Routes>
-        <Route
-          path="signin"
-          element={
-            !loggedIn ? <Login onLoggedIn={setLoggedIn} /> : <Navigate to="/" />
-          }
-        />
         <Route
           path="/"
           element={
             <ProtectedRoute
               element={
                 <Layout
-                  onLoggedIn={setLoggedIn}
+                  onLogout={handleLogout}
                   filterpopup={filterpopup}
                   setfilterPopup={setfilterPopup}
                   handlefilterpopup={handlefilterpopup}
