@@ -3,12 +3,12 @@ import './Header.scss';
 import { NavLink } from 'react-router-dom';
 
 interface HeaderProps {
-  onLoggedIn: (loggedIn: boolean) => void;
+  onLogout: () => void;
 }
 
-function Header({ onLoggedIn }: HeaderProps) {
+function Header({ onLogout }: HeaderProps) {
   const handleExit = () => {
-    onLoggedIn(false);
+    onLogout();
   };
   return (
     <div className="header">
